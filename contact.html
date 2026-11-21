@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact Us | myramnaamjap.in</title>
+    <meta name="description" content="Contact myramnaamjap.in for feedback and suggestions." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600&family=Tiro+Devanagari+Hindi&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href="https://myramnaamjap.in/contact" />
+    <style>
+      :root {
+        --bg: #1b1b3a;
+        --bg2: #262650;
+        --gold: #f5b83d;
+        --rose: #e8a0bf;
+        --ink: #f4efe6;
+        --mut: #b9b6d3;
+        --line: #3a3a70;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          18px/1.8 "Mukta",
+          sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Tiro Devanagari Hindi", "Mukta", serif;
+        font-weight: 400;
+        line-height: 1.3;
+        margin: 0 0 0.5em;
+      }
+      a {
+        color: var(--gold);
+      }
+      a:focus-visible,
+      button:focus-visible,
+      select:focus-visible {
+        outline: 3px solid var(--rose);
+        outline-offset: 3px;
+      }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+      }
+      header .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+      .logo {
+        font-family: "Tiro Devanagari Hindi", serif;
+        font-size: 22px;
+        color: var(--gold);
+        text-decoration: none;
+      }
+      nav a {
+        color: var(--ink);
+        text-decoration: none;
+        margin-left: 18px;
+        font-size: 16px;
+      }
+      nav a:hover {
+        color: var(--gold);
+      }
+      .hero {
+        text-align: center;
+        padding: 36px 0 10px;
+      }
+      .hero h1 {
+        font-size: clamp(30px, 6vw, 46px);
+      }
+      .hero p {
+        color: var(--mut);
+        margin: 0 auto;
+        max-width: 520px;
+      }
+      .tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 22px 0;
+      }
+      .tabs button {
+        background: none;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        padding: 6px 16px;
+        border-radius: 30px;
+        font: inherit;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .tabs button[aria-pressed="true"] {
+        background: var(--gold);
+        color: #1b1b3a;
+        border-color: var(--gold);
+      }
+      .mala {
+        position: relative;
+        width: min(340px, 86vw);
+        margin: 0 auto;
+      }
+      .mala svg {
+        width: 100%;
+        display: block;
+      }
+      .bead {
+        fill: var(--line);
+        transition: fill 0.2s;
+      }
+      .bead.on {
+        fill: var(--gold);
+      }
+      .mid {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      #count {
+        font-family: "Tiro Devanagari Hindi", serif;
+        font-size: 64px;
+        line-height: 1;
+      }
+      .sub {
+        color: var(--mut);
+        font-size: 15px;
+        margin-top: 6px;
+      }
+      #tap {
+        display: block;
+        margin: 18px auto 0;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 0;
+        cursor: pointer;
+        background: radial-gradient(circle at 35% 30%, #ffd978, var(--gold) 55%, #d98f12);
+        color: #1b1b3a;
+        font:
+          600 22px "Mukta",
+          sans-serif;
+        box-shadow:
+          0 0 0 8px rgba(245, 184, 61, 0.15),
+          0 10px 30px rgba(0, 0, 0, 0.4);
+        transition: transform 0.08s;
+      }
+      #tap:active {
+        transform: scale(0.94);
+      }
+      .stats {
+        display: flex;
+        justify-content: center;
+        gap: 34px;
+        margin: 26px 0 8px;
+        text-align: center;
+      }
+      .stats b {
+        display: block;
+        font-size: 26px;
+        color: var(--rose);
+        font-family: "Tiro Devanagari Hindi", serif;
+        font-weight: 400;
+      }
+      .stats span {
+        font-size: 14px;
+        color: var(--mut);
+      }
+      #reset {
+        display: block;
+        margin: 10px auto 0;
+        background: none;
+        border: 0;
+        color: var(--mut);
+        font: inherit;
+        font-size: 15px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      #msg {
+        min-height: 30px;
+        text-align: center;
+        color: var(--gold);
+        margin-top: 10px;
+      }
+      article {
+        margin-top: 56px;
+        padding-top: 36px;
+        border-top: 1px solid var(--line);
+      }
+      article h2 {
+        font-size: 28px;
+        margin-top: 1.6em;
+        color: var(--gold);
+      }
+      article h2:first-child {
+        margin-top: 0;
+      }
+      article li {
+        margin-bottom: 0.4em;
+      }
+      .box {
+        background: var(--bg2);
+        border-left: 4px solid var(--rose);
+        padding: 14px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 22px 0;
+      }
+      main.page {
+        padding: 40px 0 20px;
+      }
+      main.page h1 {
+        font-size: 36px;
+        color: var(--gold);
+      }
+      main.page h2 {
+        font-size: 22px;
+        margin-top: 1.6em;
+        font-family: "Mukta", sans-serif;
+        font-weight: 600;
+      }
+      footer {
+        margin-top: 60px;
+        border-top: 1px solid var(--line);
+        padding: 26px 0;
+        text-align: center;
+        color: var(--mut);
+        font-size: 15px;
+      }
+      footer a {
+        color: var(--mut);
+        margin: 0 10px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <a class="logo" href="/">नाम जाप</a>
+        <nav><a href="/">Home</a><a href="about">About</a><a href="contact">Contact</a></nav>
+      </div>
+    </header>
+    <main class="wrap page">
+      <h1>Contact Us</h1>
+      <p>
+        We would love to hear from you. Please write to us for feedback, bug reports, suggestions
+        for new mantras, or any privacy-related question.
+      </p>
+      <h2>Email</h2>
+      <p><a href="mailto:contact@myramnaamjap.in">contact@myramnaamjap.in</a></p>
+      <p>We aim to reply within a few working days.</p>
+    </main>
+    <footer>
+      <div class="wrap">
+        <a href="privacy-policy">Privacy Policy</a><a href="terms">Terms</a><a href="about">About</a
+        ><a href="contact">Contact</a>
+        <p>© 2026 myramnaamjap.in</p>
+      </div>
+    </footer>
+  </body>
+</html>
