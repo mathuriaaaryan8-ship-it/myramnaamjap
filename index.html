@@ -269,7 +269,33 @@
           transition: none !important;
         }
       }
+      #install {
+        text-align: center;
+        margin: 26px 0 0;
+      }
+      #installBtn {
+        background: var(--gold);
+        color: #1b1b3a;
+        border: 0;
+        border-radius: 30px;
+        padding: 10px 24px;
+        font:
+          600 17px "Mukta",
+          sans-serif;
+        cursor: pointer;
+      }
+      #iosHelp {
+        color: var(--mut);
+        font-size: 15px;
+        margin: 8px auto 0;
+        max-width: 440px;
+      }
     </style>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1b1b3a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="नाम जाप" />
   </head>
   <body>
     <header>
@@ -299,6 +325,12 @@
       </div>
       <button id="reset" type="button">इस मंत्र की गिनती शून्य करें</button>
 
+      <div id="install" hidden>
+        <button id="installBtn" type="button" hidden>📲 ऐप की तरह इंस्टॉल करें</button>
+        <p id="iosHelp" hidden>
+          iPhone में: Safari में नीचे Share आइकन दबाएँ, फिर <b>Add to Home Screen</b> चुनें।
+        </p>
+      </div>
       <article>
         <h2>नाम जाप क्या है?</h2>
         <p>
@@ -327,7 +359,6 @@
           <li><b>एकाग्रता:</b> रोज़ थोड़ा-थोड़ा अभ्यास ध्यान लगाने की आदत बनाता है।</li>
           <li><b>अनुशासन:</b> रोज़ का एक तय लक्ष्य, जैसे 1 माला, जीवन में नियमितता लाता है।</li>
           <li><b>सकारात्मक सोच:</b> दिन की शुरुआत नाम से करने पर मन हल्का और आभारी रहता है।</li>
-          
         </ul>
         <div class="box">
           ये बातें आस्था और परंपरा पर आधारित हैं। यह वेबसाइट कोई चिकित्सा या वैज्ञानिक दावा नहीं करती।
@@ -338,6 +369,18 @@
           रिफ्रेश करने पर भी वह बनी रहती है। कंप्यूटर पर स्पेस बार से भी गिनती बढ़ सकती है। माला पूरी होने पर फ़ोन
           हल्का कंपन करता है। गिनती केवल आपके ब्राउज़र में रहती है, हम इसे कहीं नहीं भेजते।
         </p>
+        <h2>फ़ोन में ऐप की तरह कैसे जोड़ें</h2>
+        <p>
+          इस वेबसाइट को आप फ़ोन की होम स्क्रीन पर आइकन की तरह जोड़ सकते हैं। फिर यह बिना एड्रेस बार के पूरी
+          स्क्रीन पर खुलता है और इंटरनेट न हो तब भी काउंटर चलता है। अलग से कुछ डाउनलोड नहीं करना पड़ता।
+        </p>
+        <ul>
+          <li>
+            <b>Android (Chrome):</b> ऊपर दिए गए “इंस्टॉल करें” बटन को दबाएँ। बटन न दिखे तो ब्राउज़र के तीन
+            बिंदुओं वाले मेनू में “Install app” या “Add to Home screen” चुनें।
+          </li>
+          <li><b>iPhone (Safari):</b> नीचे Share आइकन दबाएँ और “Add to Home Screen” चुनें।</li>
+        </ul>
         <h2>अक्सर पूछे जाने वाले प्रश्न</h2>
         <p><b>क्या यह मुफ़्त है?</b><br />हाँ, इसका उपयोग पूरी तरह मुफ़्त है।</p>
         <p>
@@ -461,5 +504,45 @@
         <p>© 2026 myramnaamjap.in</p>
       </div>
     </footer>
+    <script>
+      (function () {
+        var box = document.getElementById("install"),
+          btn = document.getElementById("installBtn"),
+          ios = document.getElementById("iosHelp"),
+          dp = null;
+        var standalone =
+          (window.matchMedia && matchMedia("(display-mode: standalone)").matches) ||
+          navigator.standalone;
+        if (!standalone) {
+          if (/iphone|ipad|ipod/i.test(navigator.userAgent)) {
+            box.hidden = false;
+            ios.hidden = false;
+          }
+          window.addEventListener("beforeinstallprompt", function (e) {
+            e.preventDefault();
+            dp = e;
+            box.hidden = false;
+            btn.hidden = false;
+          });
+          btn.onclick = function () {
+            if (dp) {
+              dp.prompt();
+              dp.userChoice.then(function () {
+                dp = null;
+                box.hidden = true;
+              });
+            }
+          };
+          window.addEventListener("appinstalled", function () {
+            box.hidden = true;
+          });
+        }
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", function () {
+            navigator.serviceWorker.register("/sw.js").catch(function () {});
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
