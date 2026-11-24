@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>राधा नाम जप | ऑनलाइन राधे राधे जाप काउंटर (Radha Naam Jap)</title>
+    <meta
+      name="description"
+      content="राधा नाम जप के लिए ऑनलाइन राधे राधे जाप काउंटर। 108 मनकों की माला, अपने आप सेव होती गिनती, और जाप की सरल विधि व नियम हिंदी में।"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600&family=Tiro+Devanagari+Hindi&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href="https://myramnaamjap.in/radha-naam-jap" />
+    <style>
+      :root {
+        --bg: #1b1b3a;
+        --bg2: #262650;
+        --gold: #f5b83d;
+        --rose: #e8a0bf;
+        --ink: #f4efe6;
+        --mut: #b9b6d3;
+        --line: #3a3a70;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          18px/1.8 "Mukta",
+          sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Tiro Devanagari Hindi", "Mukta", serif;
+        font-weight: 400;
+        line-height: 1.3;
+        margin: 0 0 0.5em;
+      }
+      a {
+        color: var(--gold);
+      }
+      a:focus-visible,
+      button:focus-visible,
+      select:focus-visible {
+        outline: 3px solid var(--rose);
+        outline-offset: 3px;
+      }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+      }
+      header .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+      .logo {
+        font-family: "Tiro Devanagari Hindi", serif;
+        font-size: 22px;
+        color: var(--gold);
+        text-decoration: none;
+      }
+      nav a {
+        color: var(--ink);
+        text-decoration: none;
+        margin-left: 18px;
+        font-size: 16px;
+      }
+      nav a:hover {
+        color: var(--gold);
+      }
+      .hero {
+        text-align: center;
+        padding: 36px 0 10px;
+      }
+      .hero h1 {
+        font-size: clamp(30px, 6vw, 46px);
+      }
+      .hero p {
+        color: var(--mut);
+        margin: 0 auto;
+        max-width: 520px;
+      }
+      .tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 22px 0;
+      }
+      .tabs button {
+        background: none;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        padding: 6px 16px;
+        border-radius: 30px;
+        font: inherit;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .tabs button[aria-pressed="true"] {
+        background: var(--gold);
+        color: #1b1b3a;
+        border-color: var(--gold);
+      }
+      .mala {
+        position: relative;
+        width: min(340px, 86vw);
+        margin: 0 auto;
+      }
+      .mala svg {
+        width: 100%;
+        display: block;
+      }
+      .bead {
+        fill: var(--line);
+        transition: fill 0.2s;
+      }
+      .bead.on {
+        fill: var(--gold);
+      }
+      .mid {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      #count {
+        font-family: "Tiro Devanagari Hindi", serif;
+        font-size: 64px;
+        line-height: 1;
+      }
+      .sub {
+        color: var(--mut);
+        font-size: 15px;
+        margin-top: 6px;
+      }
+      #tap {
+        display: block;
+        margin: 18px auto 0;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 0;
+        cursor: pointer;
+        background: radial-gradient(circle at 35% 30%, #ffd978, var(--gold) 55%, #d98f12);
+        color: #1b1b3a;
+        font:
+          600 22px "Mukta",
+          sans-serif;
+        box-shadow:
+          0 0 0 8px rgba(245, 184, 61, 0.15),
+          0 10px 30px rgba(0, 0, 0, 0.4);
+        transition: transform 0.08s;
+      }
+      #tap:active {
+        transform: scale(0.94);
+      }
+      .stats {
+        display: flex;
+        justify-content: center;
+        gap: 34px;
+        margin: 26px 0 8px;
+        text-align: center;
+      }
+      .stats b {
+        display: block;
+        font-size: 26px;
+        color: var(--rose);
+        font-family: "Tiro Devanagari Hindi", serif;
+        font-weight: 400;
+      }
+      .stats span {
+        font-size: 14px;
+        color: var(--mut);
+      }
+      #reset {
+        display: block;
+        margin: 10px auto 0;
+        background: none;
+        border: 0;
+        color: var(--mut);
+        font: inherit;
+        font-size: 15px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      #msg {
+        min-height: 30px;
+        text-align: center;
+        color: var(--gold);
+        margin-top: 10px;
+      }
+      article {
+        margin-top: 56px;
+        padding-top: 36px;
+        border-top: 1px solid var(--line);
+      }
+      article h2 {
+        font-size: 28px;
+        margin-top: 1.6em;
+        color: var(--gold);
+      }
+      article h2:first-child {
+        margin-top: 0;
+      }
+      article li {
+        margin-bottom: 0.4em;
+      }
+      .box {
+        background: var(--bg2);
+        border-left: 4px solid var(--rose);
+        padding: 14px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 22px 0;
+      }
+      main.page {
+        padding: 40px 0 20px;
+      }
+      main.page h1 {
+        font-size: 36px;
+        color: var(--gold);
+      }
+      main.page h2 {
+        font-size: 22px;
+        margin-top: 1.6em;
+        font-family: "Mukta", sans-serif;
+        font-weight: 600;
+      }
+      footer {
+        margin-top: 60px;
+        border-top: 1px solid var(--line);
+        padding: 26px 0;
+        text-align: center;
+        color: var(--mut);
+        font-size: 15px;
+      }
+      footer a {
+        color: var(--mut);
+        margin: 0 10px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <a class="logo" href="/">नाम जाप</a>
+        <nav><a href="/">Home</a><a href="about">About</a><a href="contact">Contact</a></nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <section class="hero">
+        <h1>राधा नाम जप</h1>
+        <p>
+          राधे राधे बोलते हुए बटन दबाइए और 108 की माला पूरी कीजिए। आपकी गिनती इसी फ़ोन में अपने आप सुरक्षित
+          रहती है।
+        </p>
+      </section>
+      <div class="mala">
+        <svg viewBox="0 0 300 300" id="ring" aria-hidden="true"></svg>
+        <div class="mid">
+          <div id="count" aria-live="polite">0</div>
+          <div class="sub" id="cur">0 / 108</div>
+        </div>
+      </div>
+      <button id="tap" type="button">राधे राधे</button>
+      <div id="msg" role="status"></div>
+      <div class="stats">
+        <div><b id="malas">0</b><span>पूरी माला</span></div>
+        <div><b id="total">0</b><span>कुल जाप</span></div>
+      </div>
+      <button id="reset" type="button">गिनती शून्य करें</button>
+      <article>
+        <h2>राधा नाम जप क्या है?</h2>
+        <p>
+          राधा नाम जप का अर्थ है श्री राधा रानी के नाम को श्रद्धा से बार-बार दोहराना। इसके लिए सबसे प्रचलित रूप
+          “राधे राधे” है। कुछ भक्त “श्री राधा” या “जय श्री राधे” भी बोलते हैं। ब्रज में वृंदावन, बरसाना और मथुरा की
+          गलियों में लोग एक-दूसरे को “राधे राधे” कहकर ही नमस्कार करते हैं, इसलिए यह नाम आम जीवन का भी हिस्सा बन
+          गया है।
+        </p>
+        <h2>राधा नाम का महत्व</h2>
+        <p>
+          भक्ति परंपरा में राधा जी को प्रेम और समर्पण का स्वरूप माना गया है, और श्रीकृष्ण की भक्ति के साथ उनका नाम
+          जुड़ा रहता है। संत और भक्त कहते आए हैं कि राधा नाम लेने से कृष्ण भक्ति सहज हो जाती है। ये बातें आस्था पर
+          आधारित हैं और हर भक्त का अनुभव अपना होता है, इसलिए जिस भाव से आप नाम लें, वही सबसे ज़रूरी है।
+        </p>
+        <h2>राधे राधे जाप की सरल विधि</h2>
+        <ol>
+          <li>शांत जगह चुनें और आराम से बैठें। हाथ-मुँह धोकर बैठना अच्छा माना जाता है।</li>
+          <li>कुछ गहरी साँसें लें और राधा-कृष्ण का स्मरण करें।</li>
+          <li>संकल्प लें कि आज कितना जाप करना है, जैसे 1 माला (108 बार)।</li>
+          <li>“राधे राधे” धीमे स्वर में या मन में बोलें, और हर बार ऊपर का बटन दबाएँ।</li>
+          <li>108 पूरे होने पर एक माला पूरी होती है। अंत में कुछ पल शांत बैठकर प्रणाम करें।</li>
+        </ol>
+        <p>विस्तार से पढ़ें: <a href="/radhe-radhe-jap-vidhi">राधे राधे जाप की विधि</a>।</p>
+        <h2>जाप कब करें?</h2>
+        <p>
+          सुबह का शांत समय जाप के लिए अच्छा माना जाता है। राधाष्टमी, जन्माष्टमी और कार्तिक मास जैसे अवसरों पर
+          भक्त विशेष रूप से राधा नाम का जाप करते हैं। फिर भी कोई कठोर नियम नहीं है। जो समय आप रोज़ निकाल सकें,
+          वही आपका समय है, चाहे वह रात को सोने से पहले ही क्यों न हो।
+        </p>
+        <h2>कुछ उपयोगी सुझाव</h2>
+        <ul>
+          <li>शुरुआत छोटी रखें, जैसे रोज़ 11 या 21 बार, फिर धीरे-धीरे एक माला तक पहुँचें।</li>
+          <li>मन भटके तो खुद को डाँटें नहीं, धीरे से वापस नाम पर लौट आएँ।</li>
+          <li>संख्या से ज़्यादा भाव और नियमितता का महत्व है।</li>
+          <li>जाप के समय फ़ोन की सूचनाएँ बंद रखें।</li>
+        </ul>
+        <div class="box">
+          ये बातें आस्था और परंपरा पर आधारित हैं। यह वेबसाइट कोई चिकित्सा या वैज्ञानिक दावा नहीं करती।
+        </div>
+        <h2>अक्सर पूछे जाने वाले प्रश्न</h2>
+        <p>
+          <b>एक माला में कितनी बार जाप होता है?</b><br />एक माला में 108 बार। ऊपर बनी गोल माला के हर मनके
+          पर एक जाप गिना जाता है।
+        </p>
+        <p>
+          <b>मेरी गिनती कहाँ सेव होती है?</b><br />आपके फ़ोन या कंप्यूटर के ब्राउज़र में। यह गिनती मुख्य पेज के काउंटर
+          से भी जुड़ी है, इसलिए दोनों जगह एक जैसी दिखती है।
+        </p>
+        <p><b>क्या यह मुफ़्त है?</b><br />हाँ, इसका उपयोग पूरी तरह मुफ़्त है।</p>
+        <p>
+          और पढ़ें: <a href="/mala-jap-ke-niyam">माला जाप के नियम</a> और
+          <a href="/ram-naam-jap-ke-fayde">राम नाम जाप के फायदे</a>। दूसरे मंत्रों के लिए
+          <a href="/">मुख्य काउंटर</a> खोलें।
+        </p>
+      </article>
+    </main>
+    <script>
+      (function () {
+        var KEY = "radhe",
+          $ = function (i) {
+            return document.getElementById(i);
+          };
+        var ring = $("ring"),
+          data = {},
+          ns = "http://www.w3.org/2000/svg",
+          beads = [];
+        try {
+          data = JSON.parse(localStorage.getItem("jap") || "{}");
+        } catch (e) {}
+        for (var i = 0; i < 108; i++) {
+          var a = (i / 108) * 2 * Math.PI - Math.PI / 2,
+            c = document.createElementNS(ns, "circle");
+          c.setAttribute("cx", 150 + 132 * Math.cos(a));
+          c.setAttribute("cy", 150 + 132 * Math.sin(a));
+          c.setAttribute("r", i % 27 == 0 ? 5.5 : 4);
+          c.setAttribute("class", "bead");
+          ring.appendChild(c);
+          beads.push(c);
+        }
+        function save() {
+          try {
+            localStorage.setItem("jap", JSON.stringify(data));
+          } catch (e) {}
+        }
+        function n() {
+          return data[KEY] || 0;
+        }
+        function draw() {
+          var v = n(),
+            r = v % 108,
+            t = 0;
+          $("count").textContent = v;
+          $("cur").textContent = r + " / 108";
+          for (var i = 0; i < 108; i++) beads[i].setAttribute("class", i < r ? "bead on" : "bead");
+          for (var k in data) t += data[k];
+          $("total").textContent = t;
+          $("malas").textContent = Math.floor(v / 108);
+        }
+        function tap() {
+          data[KEY] = n() + 1;
+          save();
+          draw();
+          if (data[KEY] % 108 == 0) {
+            $("msg").textContent = "🙏 एक माला पूरी हुई। राधे राधे!";
+            if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+          } else {
+            $("msg").textContent = "";
+            if (navigator.vibrate) navigator.vibrate(12);
+          }
+        }
+        $("tap").onclick = tap;
+        document.addEventListener("keydown", function (e) {
+          if (e.code == "Space" && e.target.tagName != "BUTTON") {
+            e.preventDefault();
+            tap();
+          }
+        });
+        $("reset").onclick = function () {
+          if (confirm('क्या आप "राधे राधे" की गिनती शून्य करना चाहते हैं?')) {
+            data[KEY] = 0;
+            save();
+            $("msg").textContent = "";
+            draw();
+          }
+        };
+        draw();
+      })();
+    </script>
+    <footer>
+      <div class="wrap">
+        <a href="privacy-policy">Privacy Policy</a><a href="terms">Terms</a><a href="about">About</a
+        ><a href="contact">Contact</a>
+        <p>© 2026 myramnaamjap.in</p>
+      </div>
+    </footer>
+  </body>
+</html>
